@@ -1,19 +1,46 @@
-# vue_ele_pro1
+## 使用element 搭建项目
 
-## Project setup
+### 一、环境准备
+
+#### 1.1 项目创建
+
 ```
+# 全局按照 vue/cli3
+npm install -g @vue/cli
+
+# 创建项目
+vue create hello_project
+
+# 按照依赖
 npm install
-```
 
-### Compiles and hot-reloads for development
-```
+# 安装element
+cd hello_project
+vue add element
+npm install --save js-cookie
+
+# 运行项目
 npm run serve
+
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+安装依赖：
+
+````
+npm install node-sass sass-loader less less-loader --save-dev
+````
+
+技术博客：
+
+https://blog.csdn.net/harsima/article/details/77949623
+
+如果国内无法安装，则使用cnpm 
+
+````
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+cnpm install node-sass
+cnpm install axios mockjs --save
+````
+
