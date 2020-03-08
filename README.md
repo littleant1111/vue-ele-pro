@@ -44,3 +44,9 @@ cnpm install node-sass
 cnpm install axios mockjs --save
 ````
 
+https://element.eleme.cn/#/zh-CN/component/menu
+
+解决git 总是输入密码：
+git config --global credential.helper store
+
+
