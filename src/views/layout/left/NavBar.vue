@@ -1,11 +1,6 @@
 <template>
     <div class="side-nav" :class="layout">
-        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-            <el-radio-button :label="false">展开</el-radio-button>
-            <el-radio-button :label="true">收起</el-radio-button>
-        </el-radio-group>
         <el-menu
-            :collapse="isCollapse"
             router
             ref="navbar"
             :default-active="defActive"
@@ -17,7 +12,12 @@
             :unique-opened="false"
             :default-openeds="openeds"
             >
-            <nav-bar-item v-for="(item, n) in navList" :item="item" :navIndex="String(n)" :key="n"></nav-bar-item>
+            <nav-bar-item
+              v-for="(item, n) in navList"
+              :item="item"
+              :navIndex="String(n)"
+              :key="n"
+            ></nav-bar-item>
         </el-menu>
         <div v-if="this.navMode == 'horizontal'" v-show="navBgShow" class="full-screen-navBg" @click.self="closeAll"></div>
     </div>
@@ -32,7 +32,6 @@ export default {
         return {
             navBgShow: false,
             openeds: [],
-            isCollapse: true
         }
     },
     props: ['layout'],
@@ -60,30 +59,28 @@ export default {
     },
     mounted() {
         console.log("mouted")
+        // 展开所有菜单
+        this.expendAllMenu()
     },
     activated() {
-        console.log("activated ..")
+        // console.log("activated ..")
     },
     watch: {
         // 当通过TagNav来激活页面时也执行一次selectMenu
-        $route(){
-            let path = this.$route.path
-            console.log("route path:", path, ", indexPath: ", indexPath)
-            let indexPath = this.$refs.navbar.items[path].indexPath
-            this.selectMenu(path, indexPath)
-            console.log("openeds:", this.openeds)
-        }
+        // $route(){
+        //     let path = this.$route.path
+        //     console.log("route path:", path, ", indexPath: ", indexPath)
+        //     let indexPath = this.$refs.navbar.items[path].indexPath
+        //     this.selectMenu(path, indexPath)
+        //     console.log("openeds:", this.openeds)
+        // }
     },
     methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
+
+        expendAllMenu(){
+            console.log("menus: ", this.$refs.navbar.openedMenus)
         },
 
-
-        // eslint-disable-next-line
         selectMenu(index, indexPath){
             /**
              * 在选择父级菜单时自动关闭其下所有子菜单
@@ -103,10 +100,10 @@ export default {
             }
 
             // 关闭菜单
-            openMenuList = openMenuList.reverse()
-            openMenuList.forEach((ele) => {
-                this.$refs.navbar.closeMenu(ele)
-            })
+            // openMenuList = openMenuList.reverse()
+            // openMenuList.forEach((ele) => {
+            //     this.$refs.navbar.closeMenu(ele)
+            // })
             if(this.navMode == 'horizontal'){
                 this.navBgShow = false
             }

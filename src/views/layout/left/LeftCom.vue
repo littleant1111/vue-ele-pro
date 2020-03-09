@@ -1,6 +1,6 @@
 <template>
-  <div class="left">
-    <nav-bar layout="left"></nav-bar>
+  <div class="left" >
+    <nav-bar layout="left" ></nav-bar>
   </div>
 </template>
 
@@ -16,6 +16,8 @@
     data() {
       return {
       }
+    },
+    methods: {
     }
   }
 </script>
@@ -29,4 +31,5 @@
     bottom: 0;
     background-color: #eeeeee;
   }
+
 </style>
